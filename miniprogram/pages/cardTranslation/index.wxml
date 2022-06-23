@@ -1,0 +1,37 @@
+<view>
+  <view class="search_input">
+    <input class="weui-input" placeholder="卡牌序号" bindinput="bindKeyInput" />
+  </view>
+  <button class="search_button" type="primary" bindtap="getRecord">查询</button>
+  <view wx:if="{{cardType === 'Q'}}">
+    <view class="text_question">
+      <text>{{record.question_translation}}</text>
+    </view>
+    <view class="text_answer">
+      <view wx:if="{{record}}" class="icon">
+        <view class="icon icon_check"></view>
+      </view>
+      <text>{{record.yes_translation}}</text>
+    </view>
+    <view class="text_answer">
+      <view wx:if="{{record}}" class="icon">
+        <view class="icon icon_cross"></view>
+      </view>
+      <text>{{record.no_translation}}</text>
+    </view>
+  </view>
+  <view wx:if="{{cardType === 'C' || cardType === 'H' }}">
+    <view class="text_title">
+      <text>{{record.title_translation}}</text>
+    </view>
+    <view class="text_description">
+      <text>{{record.description_translation}}</text>
+    </view>
+    <view class="text_effect">
+      <view wx:if="{{record}}" class="icon">
+        <view class="icon icon_effect"></view>
+      </view>
+      <text>{{record.effect_translation}}</text>
+    </view>
+  </view>
+</view>
