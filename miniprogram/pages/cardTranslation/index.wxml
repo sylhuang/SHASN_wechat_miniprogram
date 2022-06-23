@@ -34,4 +34,5 @@
       <text>{{record.effect_translation}}</text>
     </view>
   </view>
+  <view class="footer">© 蓝朋友核心桌游俱乐部 蓝屋汉化组</view>
 </view>

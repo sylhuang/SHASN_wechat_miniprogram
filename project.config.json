@@ -43,7 +43,7 @@
   "appid": "wxa867bc79be045e36",
   "projectname": "shasnlocalisation",
   "libVersion": "2.14.1",
-  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+  "cloudfunctionTemplateRoot": "",
   "condition": {
     "search": {
       "list": []

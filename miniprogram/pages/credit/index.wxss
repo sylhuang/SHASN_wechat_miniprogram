@@ -20,5 +20,5 @@ page {
   font-size: 17px;
   font-family: PingFang SC;
   font-weight: 400;
-  color: #000000;
+  color: #666;
 }

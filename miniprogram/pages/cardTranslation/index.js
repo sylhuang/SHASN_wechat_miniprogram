@@ -1,5 +1,6 @@
-Page({
+const utils = require('./utils');
 
+Page({
   /**
    * 页面的初始数据
    */
@@ -11,51 +12,37 @@ Page({
   },
 
   bindKeyInput(e) {
-    const cardId = e.detail.value;
+    const cardId = e.detail.value.toUpperCase();
 
     if (cardId.length === 7) {
-      const matches = cardId.match(/[A-Z][\d]+([CHQ])[\d]+/);
-
-      if (matches && matches.length) {
-        this.setData({
-          cardType: matches[1],
-          cardId,
-        });
-
-        return;
-      }
+      this.setData({
+        cardId,
+      });
     }
-
-    this.setData({
-      cardType: '',
-      cardId: '',
-      record: '',
-    });
   },
 
   getRecord() {
-    if (this.data.cardId && this.data.cardType) {
+    if (this.data.cardId) {
       wx.showLoading({
         title: '',
       });
-      wx.cloud.callFunction({
-        name: 'dbCRUD',
-        data: {
-          data: {
-            cardType: this.data.cardType,
-            cardId: this.data.cardId,
+
+      utils.getRecordFromStorage(this.data.cardId)
+        .then((res) => {
+          if (res) {
+            const { record, cardType } = res;
+
+            this.setData({
+              haveGetRecord: true,
+              record,
+              cardType,
+            });
+            wx.hideLoading();
           }
-        }
-      }).then((resp) => {
-        this.setData({
-          haveGetRecord: true,
-          record: resp.result.data[0],
+        }).catch((e) => {
+          console.log(e);
+          wx.hideLoading();
         });
-        wx.hideLoading();
-      }).catch((e) => {
-        console.log(e);
-        wx.hideLoading();
-      });
     }
   },
 
