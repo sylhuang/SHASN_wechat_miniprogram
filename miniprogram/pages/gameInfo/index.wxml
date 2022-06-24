@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="title">
+    桌游官网
+  </view>
+  <view class="info">
+    <a href="https://www.playshasn.com/">https://www.playshasn.com/</a>
+  </view>
+  <view class="title">
+    桌游介绍
+  </view>
+  <view class="info">
+    <em>SHASN</em> 是由 <em>Zain Memon</em> 设计的一款史诗级的，关于政治、伦理和策略的 2-5 人桌游。
+  </view>
+  <view class="info">
+    <text class="italic">
+      当民主分崩离析，
+      当国家的命运尽握你手，
+      当你投身于这动荡的政局……
+      
+      你是会坚持自己的信念、忠于自己所代表的人民，还是会为了更高的权力不择手段、左右逢源？
+    </text>
+  </view>
+</view>

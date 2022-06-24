@@ -7,6 +7,7 @@ Page({
   data: {
     haveGetRecord: false,
     hideFeedback: true,
+    showNotes: false,
     record: null,
     cardId: '',
     cardType: '',
@@ -15,13 +16,11 @@ Page({
   bindKeyInput(e) {
     const cardId = e.detail.value.toUpperCase();
 
-    if (cardId.length === 7) {
-      this.setData({
-        cardId,
-      });
-    }
+    this.setData({
+      cardId,
+    });
   },
-  
+
   bindFeedbackInput(e) {
     this.setData({
       feedback: e.detail.value,
@@ -29,28 +28,43 @@ Page({
   },
 
   getRecord() {
-    if (this.data.cardId) {
+    if (this.data.cardId && this.data.cardId.length === 7) {
       wx.showLoading({
         title: '',
       });
 
       utils.getRecordFromStorage(this.data.cardId)
         .then((res) => {
+          wx.hideLoading();
+
           if (res) {
-            const { record, cardType } = res;
+            const {
+              record,
+              cardType
+            } = res;
 
             this.setData({
               haveGetRecord: true,
               record,
               cardType,
             });
+          } else {
+            wx.showToast({
+              title: '序号不存在',
+              icon: 'error',
+              duration: 2000
+            })
           }
-          
-          wx.hideLoading();
         }).catch((e) => {
           console.log(e);
           wx.hideLoading();
         });
+    } else {
+      wx.showToast({
+        title: '序号不存在',
+        icon: 'error',
+        duration: 2000
+      })
     }
   },
 
@@ -58,6 +72,12 @@ Page({
     this.setData({
       haveGetRecord: false,
       record: ''
+    });
+  },
+
+  toggleNotes() {
+    this.setData({
+      showNotes: !this.data.showNotes,
     });
   },
 
@@ -75,10 +95,19 @@ Page({
   },
 
   submitFeedback() {
+    if (this.data.feedback) {
+      utils.createFeedback(this.data.cardId, this.data.feedback);
+    }
+    
     this.setData({
       hideFeedback: true,
       feedback: ''
     });
+
+    wx.showToast({
+      title: '感谢您的贡献',
+      duration: 2000,
+    })
   },
 
   showNotes() {
@@ -86,7 +115,7 @@ Page({
       title: '注释',
       content: 'blahblah',
       editable: true,
-      success (res) {
+      success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
         } else if (res.cancel) {

@@ -3,42 +3,50 @@
     <input class="weui-input" placeholder="卡牌序号" bindinput="bindKeyInput" />
   </view>
   <button class="search_button" type="primary" bindtap="getRecord">查询</button>
-  <view wx:if="{{cardType === 'Q'}}">
-    <view class="text_question">
-      <text>{{record.question_translation}}</text>
-    </view>
-    <view class="text_answer">
-      <view wx:if="{{record}}" class="icon">
-        <view class="icon icon_check"></view>
+  <view wx:if="{{record}}" class="content_box">
+    <view wx:if="{{cardType === 'Q'}}">
+      <view class="text_question">
+        <text>{{record.question_translation}}</text>
       </view>
-      <text>{{record.yes_translation}}</text>
-    </view>
-    <view class="text_answer">
-      <view wx:if="{{record}}" class="icon">
-        <view class="icon icon_cross"></view>
+      <view class="text_answer">
+        <view class="icon">
+          <view class="icon icon_check"></view>
+        </view>
+        <text>{{record.yes_translation}}</text>
       </view>
-      <text>{{record.no_translation}}</text>
+      <view class="text_answer">
+        <view class="icon">
+          <view class="icon icon_cross"></view>
+        </view>
+        <text>{{record.no_translation}}</text>
+      </view>
+    </view>
+    <view wx:if="{{cardType === 'C' || cardType === 'H' }}">
+      <view class="text_title">
+        <text>{{record.title_translation}}</text>
+      </view>
+      <view class="text_description">
+        <text>{{record.description_translation}}</text>
+      </view>
+      <view class="text_effect">
+        <view class="icon">
+          <view class="icon icon_effect"></view>
+        </view>
+        <text>{{record.effect_translation}}</text>
+      </view>
+    </view>
+    <view class="extra_box">
+      <button wx:if="{{record.notes}}" class="extra_btn" size="mini" bindtap="toggleNotes">{{showNotes ? '隐藏' : '显示'}}注释</button>
+      <button class="extra_btn" type="warn" size="mini" bindtap="showFeedback">勘误</button>
+    </view>
+    <view wx:if="{{showNotes}}" class="text_notes">
+      <text>{{record.notes}}</text>
     </view>
   </view>
-  <view wx:if="{{cardType === 'C' || cardType === 'H' }}">
-    <view class="text_title">
-      <text>{{record.title_translation}}</text>
+  <modal class="feedback_modal" hidden="{{hideFeedback}}" title="提交勘误" confirm-text="提交" cancel-text="取消" bindcancel="cancelFeedback" bindconfirm="submitFeedback">
+    <view class="text_feedback">
+      <textarea placeholder="卡牌 {{cardId}} 的勘误:" value="{{feedback}}" bindinput="bindFeedbackInput" />
     </view>
-    <view class="text_description">
-      <text>{{record.description_translation}}</text>
-    </view>
-    <view class="text_effect">
-      <view wx:if="{{record}}" class="icon">
-        <view class="icon icon_effect"></view>
-      </view>
-      <text>{{record.effect_translation}}</text>
-    </view>
-  </view>
-  <modal hidden="{{hideFeedback}}" title="提交勘误" confirm-text="提交" cancel-text="取消" bindcancel="cancelFeedback" bindconfirm="submitFeedback">
-    <textarea value="{{feedback}}" bindinput="bindFeedbackInput" />
   </modal>
-  <view wx:if="{{record}}" class="feedback_box">
-    <button size="mini" bindtap="showFeedback">勘误</button>
-  </view>
   <view class="footer">© 蓝朋友核心桌游俱乐部 蓝屋汉化组</view>
 </view>

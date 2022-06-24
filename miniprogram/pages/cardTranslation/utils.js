@@ -68,6 +68,20 @@ const getRecordFromStorage = async (cardId) => {
   };
 };
 
+const createFeedback = async (cardId, feedback) => {
+  return await wx.cloud.callFunction({
+    name: 'dbCRUD',
+    data: {
+      data: {
+        cardId,
+        feedback,
+        type: 'createFeedback',
+      }
+    }
+  });
+}
+
 module.exports = {
   getRecordFromStorage,
+  createFeedback,
 }

@@ -18,6 +18,9 @@ Page({
       tip: '模组资讯、建议与支持',
       showItem: false,
       item: [{
+        title: '桌游介绍',
+        page: 'gameInfo'
+      }, {
         title: '贡献人员',
         page: 'credit'
       }]

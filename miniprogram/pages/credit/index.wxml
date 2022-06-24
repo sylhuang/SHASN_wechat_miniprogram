@@ -1,5 +1,6 @@
 <view class="page">
-  <view class="info">小程序开发： 风姬</view>
+  <view class="title">特别鸣谢</view>
+  <view class="info">感谢 SHASN 桌游官方为我们提供电子文本</view>
   <view class="title">罗马 40 BCE - 共和国的陨落</view>
   <view class="info">翻译：鱼飞、水星、风姬、Cc、典点</view>
   <view class="info">校对：风姬</view>
@@ -8,4 +9,6 @@
   <view class="info">翻译：风姬、水星、Cc、典点</view>
   <view class="info">校对：风姬</view>
   <view class="info">啦啦队：大O</view>
+  <view class="title">小程序开发</view>
+  <view class="info">临时工：风姬</view>
 </view>

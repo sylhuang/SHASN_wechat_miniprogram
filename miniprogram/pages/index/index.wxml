@@ -3,7 +3,7 @@
 
   <view class="title">SHASN</view>
 
-  <view class="top_tip">A Political Strategic Boardgame</view>
+  <view class="top_tip">The Political Strategy Board Game</view>
 
   <view class="power" wx:key="title" wx:for="{{powerList}}" wx:for-item="power">
     <view class="power_info" data-index="{{index}}" bindtap="onClickPowerInfo">

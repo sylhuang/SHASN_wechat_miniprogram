@@ -17,3 +17,11 @@
   font-weight: 400;
   color: #666;
 }
+
+em {
+  font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
+}

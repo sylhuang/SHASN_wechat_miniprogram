@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/cardTranslation/index",
-    "pages/credit/index"
+    "pages/credit/index",
+    "pages/gameInfo/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
