@@ -3,7 +3,7 @@
     桌游官网
   </view>
   <view class="info">
-    <a href="https://www.playshasn.com/">https://www.playshasn.com/</a>
+    <navigator url="https://www.playshasn.com/">https://www.playshasn.com/</navigator>
   </view>
   <view class="title">
     桌游介绍
