@@ -37,8 +37,9 @@ Page({
               record,
               cardType,
             });
-            wx.hideLoading();
           }
+          
+          wx.hideLoading();
         }).catch((e) => {
           console.log(e);
           wx.hideLoading();
