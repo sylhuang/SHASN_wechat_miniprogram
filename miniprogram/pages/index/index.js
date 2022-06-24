@@ -37,8 +37,19 @@ Page({
   },
 
   jumpPage(e) {
-    wx.navigateTo({
-      url: `/pages/${e.currentTarget.dataset.page}/index?envId=${this.data.selectedEnv.envId}`,
-    });
+    if (e.currentTarget.dataset.page === 'cardTranslation') {
+      wx.navigateTo({
+        url: `/pages/${e.currentTarget.dataset.page}/index?envId=${this.data.selectedEnv.envId}`,
+        success: () => {
+          wx.setNavigationBarTitle({
+            title: e.currentTarget.dataset.title,
+          })
+        }
+      });
+    } else {
+      wx.navigateTo({
+        url: `/pages/${e.currentTarget.dataset.page}/index?envId=${this.data.selectedEnv.envId}`,
+      });
+    }
   },
 });

@@ -34,5 +34,11 @@
       <text>{{record.effect_translation}}</text>
     </view>
   </view>
+  <modal hidden="{{hideFeedback}}" title="提交勘误" confirm-text="提交" cancel-text="取消" bindcancel="cancelFeedback" bindconfirm="submitFeedback">
+    <textarea value="{{feedback}}" bindinput="bindFeedbackInput" />
+  </modal>
+  <view wx:if="{{record}}" class="feedback_box">
+    <button size="mini" bindtap="showFeedback">勘误</button>
+  </view>
   <view class="footer">© 蓝朋友核心桌游俱乐部 蓝屋汉化组</view>
 </view>
